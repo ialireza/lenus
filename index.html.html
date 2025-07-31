@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lenus.ir - فروشگاه اینترنتی پیشرفته</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #3f37c9;
+            --accent: #4895ef;
+            --dark: #1b263b;
+            --light: #f8f9fa;
+            --success: #4cc9f0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        /* هدر */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        
+        .cta-button {
+            background-color: white;
+            color: var(--primary);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            background-color: var(--accent);
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        /* بخش اصلی */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 0 2rem;
+        }
+        
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 1s ease 0.3s forwards;
+            opacity: 0;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            animation: fadeInUp 1s ease 0.6s forwards;
+            opacity: 0;
+        }
+        
+        .btn {
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary {
+            background-color: var(--accent);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn-secondary:hover {
+            background-color: white;
+            color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        /* امکانات */
+        .features {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+        
+        .section-title p {
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+        
+        /* تماس */
+        .contact {
+            background-color: var(--primary);
+            color: white;
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+        
+        .contact .section-title h2,
+        .contact .section-title p {
+            color: white;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .contact-method {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background-color: rgba(255,255,255,0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-method:hover {
+            background-color: rgba(255,255,255,0.2);
+            transform: translateY(-5px);
+        }
+        
+        .contact-icon {
+            font-size: 1.5rem;
+        }
+        
+        /* فوتر */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .social-link {
+            color: white;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover {
+            color: var(--accent);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            margin-top: 2rem;
+            color: rgba(255,255,255,0.7);
+        }
+        
+        /* انیمیشن */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* ریسپانسیو */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+            
+            .nav-links {
+                gap: 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- هدر -->
+    <header>
+        <nav class="navbar">
+            <a href="#" class="logo">Lenus.ir</a>
+            <div class="nav-links">
+                <a href="#features">امکانات</a>
+                <a href="#contact">تماس</a>
+                <a href="#" class="cta-button">درخواست دمو</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- بخش اصلی -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>فروشگاه اینترنتی با امکانات کامل</h1>
+            <p>سایتی حرفه‌ای با پنل مدیریت پیشرفته، درگاه پرداخت امن و طراحی ریسپانسیو آماده فروش یا همکاری است.</p>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn btn-primary">تماس فوری</a>
+                <a href="#features" class="btn btn-secondary">مشاهده امکانات</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- امکانات -->
+    <section id="features" class="features">
+        <div class="section-title">
+            <h2>چرا این فروشگاه اینترنتی را انتخاب کنید؟</h2>
+            <p>تمام ویژگی‌های مورد نیاز برای یک کسب‌وکار آنلاین موفق در این پلتفرم وجود دارد</p>
+        </div>
+        
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-cog"></i>
+                </div>
+                <h3>پنل مدیریت پیشرفته</h3>
+                <p>مدیریت کامل محصولات، دسته‌بندی‌ها، کاربران، سفارشات و گزارش‌های تحلیلی پیشرفته</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <h3>طراحی ریسپانسیو</h3>
+                <p>نمایش عالی در تمام دستگاه‌ها از موبایل تا تبلت و دسکتاپ با UX بهینه</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-lock"></i>
+                </div>
+                <h3>امنیت بالا</h3>
+                <p>سیستم امنیتی پیشرفته با محافظت در برابر حملات رایج وب</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-truck"></i>
+                </div>
+                <h3>سیستم حمل و نقل</h3>
+                <p>پشتیبانی از چندین روش ارسال با محاسبه خودکار هزینه حمل</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-search"></i>
+                </div>
+                <h3>بهینه‌سازی SEO</h3>
+                <p>ساختار بهینه‌شده برای موتورهای جستجو با امکان مدیریت متا تگ‌ها</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-credit-card"></i>
+                </div>
+                <h3>درگاه پرداخت</h3>
+                <p>اتصال به درگاه‌های بانکی معتبر با پشتیبانی از چندین روش پرداخت</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- تماس -->
+    <section id="contact" class="contact">
+        <div class="section-title">
+            <h2>آماده همکاری هستیم</h2>
+            <p>برای خرید سایت یا دریافت اطلاعات بیشتر با ما تماس بگیرید</p>
+        </div>
+        
+        <div class="contact-info">
+            <div class="contact-method">
+                <div class="contact-icon">
+                    <i class="fas fa-phone"></i>
+                </div>
+                <div>
+                    <h3>تلفن</h3>
+                    <p><a href="tel:+989369446711" style="color: white;">09369446711</a></p>
+                </div>
+            </div>
+            
+            <div class="contact-method">
+                <div class="contact-icon">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <div>
+                    <h3>ایمیل</h3>
+                    <p><a href="mailto:alireza.mohammadi.1990@gmail.com" style="color: white;">alireza.mohammadi.1990@gmail.com</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- فوتر -->
+    <footer>
+        <div class="footer-content">
+            <h2>Lenus.ir</h2>
+            <p>پلتفرم فروشگاهی حرفه‌ای با تمام امکانات مورد نیاز</p>
+            
+            <div class="social-links">
+                <a href="#" class="social-link"><i class="fab fa-telegram"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+            </div>
+            
+            <div class="copyright">
+                <p>© 2023 Lenus.ir - تمامی حقوق محفوظ است</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // اسکرول نرم برای لینک‌ها
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // انیمیشن برای کارت‌ها هنگام اسکرول
+        const featureCards = document.querySelectorAll('.feature-card');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        featureCards.forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'all 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
